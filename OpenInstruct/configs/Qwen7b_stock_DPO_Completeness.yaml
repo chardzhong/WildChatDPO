@@ -1,0 +1,20 @@
+model_name_or_path: Qwen/Qwen2.5-7B
+model_revision: main
+use_flash_attn: true
+gradient_checkpointing: true
+tokenizer_name: Qwen/Qwen2.5-7B
+use_slow_tokenizer: true
+dataset_name: chardizard/dpo-mix5-openinstruct-Llama3-Completeness-MinChosen8-MinDelta6
+max_seq_length: 8192
+preprocessing_num_workers: 16
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 1 # designed for 8 GPUs, so batch size 32
+num_train_epochs: 1
+output_dir: Qwen2.5-7b-stock-DPO-Completeness-MinChosen8-MinDelta6
+push_to_hub: true
+with_tracking: true
+report_to:
+  - wandb
+logging_steps: 10
+checkpointing_steps: 1000
+keep_last_n_checkpoints: 3
